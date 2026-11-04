@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+---
+
+<Base title="Page introuvable" description="La page demandée n'existe pas ou a été déplacée." noindex>
+  <section class="not-found">
+    <div class="container not-found__inner">
+      <span class="eyebrow">Erreur 404</span>
+      <h1 class="h1">Cette page n'existe pas.</h1>
+      <p class="lead">Le lien est peut-être erroné ou la page a été déplacée.</p>
+      <div class="not-found__actions">
+        <Button href="/" arrow>Retour à l'accueil</Button>
+        <Button href="/#services" variant="secondary">Découvrir nos services</Button>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - var(--header-h));
+    padding-block: var(--section);
+  }
+
+  .not-found__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 40rem;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+</style>

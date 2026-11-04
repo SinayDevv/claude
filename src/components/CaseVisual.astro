@@ -1,0 +1,232 @@
+---
+/**
+ * Visuel d'étude de cas généré automatiquement (façon capture de tableau de
+ * bord) lorsque aucune image n'est fournie. Trois styles : barres, courbe, entonnoir.
+ */
+import { smoothPath, areaPath, columnPath, type Point } from '../lib/svg';
+
+interface Props {
+  variant: 'bars' | 'line' | 'funnel';
+  delta?: string;
+  label?: string;
+}
+
+const { variant, delta, label = 'Performance de la campagne' } = Astro.props;
+
+const W = 280;
+const H = 120;
+const BASE = 104;
+
+const barValues = [30, 42, 38, 55, 50, 68, 76, 92, 100];
+const BAR_W = 20;
+const barGap = (W - 16 - barValues.length * BAR_W) / (barValues.length - 1);
+
+const linePoints: Point[] = [
+  [8, 92],
+  [52, 84],
+  [96, 88],
+  [140, 64],
+  [184, 58],
+  [228, 36],
+  [272, 18],
+];
+
+const funnel = [
+  { label: 'Impressions', width: 1 },
+  { label: 'Clics', width: 0.72 },
+  { label: 'Leads', width: 0.46 },
+  { label: 'Clients', width: 0.24 },
+];
+---
+
+<div class="cv" aria-hidden="true">
+  <div class="cv__window">
+    <div class="cv__bar">
+      <span class="cv__dots"><i></i><i></i><i></i></span>
+      <span class="cv__title">{label}</span>
+      {delta && <span class="cv__delta">{delta}</span>}
+    </div>
+
+    {
+      variant === 'bars' && (
+        <svg viewBox={`0 0 ${W} ${H}`} class="cv__chart">
+          {[24, 64, BASE].map((y) => (
+            <line x1="8" x2={W - 8} y1={y} y2={y} class="cv__grid" />
+          ))}
+          {barValues.map((v, i) => {
+            const h = (v / 100) * (BASE - 12);
+            return (
+              <path
+                d={columnPath(8 + i * (BAR_W + barGap), BASE - h, BAR_W, h, 4)}
+                class:list={['cv__col', i >= barValues.length - 3 && 'cv__col--accent']}
+              />
+            );
+          })}
+        </svg>
+      )
+    }
+
+    {
+      variant === 'line' && (
+        <svg viewBox={`0 0 ${W} ${H}`} class="cv__chart">
+          <defs>
+            <linearGradient id="cv-area" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#762BFF" stop-opacity="0.2" />
+              <stop offset="100%" stop-color="#762BFF" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          {[24, 64, BASE].map((y) => (
+            <line x1="8" x2={W - 8} y1={y} y2={y} class="cv__grid" />
+          ))}
+          <path d={areaPath(linePoints, BASE)} fill="url(#cv-area)" />
+          <path d={smoothPath(linePoints)} class="cv__line" />
+          <circle cx={linePoints[linePoints.length - 1][0]} cy={linePoints[linePoints.length - 1][1]} r="4.5" class="cv__dot" />
+        </svg>
+      )
+    }
+
+    {
+      variant === 'funnel' && (
+        <div class="cv__funnel">
+          {funnel.map((row, i) => (
+            <div class="cv__funnel-row">
+              <span class="cv__funnel-label">{row.label}</span>
+              <span class="cv__funnel-track">
+                <span
+                  class="cv__funnel-fill"
+                  style={`width:${row.width * 100}%; opacity:${0.35 + (i / (funnel.length - 1)) * 0.65}`}
+                />
+              </span>
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .cv {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    padding: 1.5rem 1.5rem 0;
+    overflow: hidden;
+    background:
+      radial-gradient(90% 80% at 100% 0%, rgba(118, 43, 255, 0.14), transparent 60%),
+      linear-gradient(180deg, #f3edff 0%, #eee5ff 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cv__window {
+    height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 24px 48px -24px rgba(17, 16, 24, 0.25);
+    transform: translateY(0);
+    transition: transform var(--duration) var(--ease);
+  }
+
+  :global(.case:hover) .cv__window {
+    transform: translateY(-4px);
+  }
+
+  .cv__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 0.875rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.6875rem;
+    color: var(--muted);
+  }
+
+  .cv__dots {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  .cv__dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(17, 16, 24, 0.12);
+  }
+
+  .cv__title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cv__delta {
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .cv__chart {
+    width: 100%;
+    height: auto;
+    padding: 0.875rem 0.5rem 0;
+  }
+
+  .cv__grid {
+    stroke: rgba(17, 16, 24, 0.07);
+    stroke-width: 1;
+  }
+
+  .cv__col {
+    fill: var(--primary-soft);
+  }
+
+  .cv__col--accent {
+    fill: var(--primary);
+  }
+
+  .cv__line {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .cv__dot {
+    fill: var(--primary);
+    stroke: var(--surface);
+    stroke-width: 2.5;
+  }
+
+  .cv__funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .cv__funnel-row {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.6875rem;
+    color: var(--muted);
+  }
+
+  .cv__funnel-track {
+    display: block;
+    height: 10px;
+  }
+
+  .cv__funnel-fill {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background: var(--primary);
+  }
+</style>

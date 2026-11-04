@@ -1,0 +1,45 @@
+---
+/**
+ * Petit badge « Exemple » signalant une donnée de démonstration.
+ * Il disparaît automatiquement lorsque `site.demoData` vaut `false`.
+ */
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+  /** Pour les fonds sombres. */
+  light?: boolean;
+}
+
+const { class: className, light = false } = Astro.props;
+---
+
+{
+  site.demoData && (
+    <span class:list={['demo-tag', light && 'demo-tag--light', className]} title="Donnée de démonstration à remplacer par vos chiffres réels">
+      Exemple
+    </span>
+  )
+}
+
+<style>
+  .demo-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px dashed var(--border-strong);
+    color: var(--muted);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    vertical-align: middle;
+  }
+
+  .demo-tag--light {
+    border-color: rgba(250, 250, 252, 0.3);
+    color: var(--on-dark-muted);
+  }
+</style>

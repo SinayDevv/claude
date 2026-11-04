@@ -1,0 +1,136 @@
+---
+import { steps } from '../../data/site';
+---
+
+<section class="section method" id="methode" aria-labelledby="method-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Notre méthode</span>
+      <h2 class="h2" id="method-title">Une méthode pensée pour votre croissance.</h2>
+      <p class="lead">Un processus clair, en quatre étapes, pour passer de l'analyse aux résultats.</p>
+    </div>
+
+    <ol class="method__steps">
+      {
+        steps.map((step, i) => (
+          <li class="step" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            <span class="step__number">{step.number}</span>
+            <h3 class="h3 step__title">{step.title}</h3>
+            <p class="step__text">{step.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .method {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method__steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.5rem 2rem;
+    counter-reset: step;
+  }
+
+  .step {
+    position: relative;
+    padding-top: 1.75rem;
+  }
+
+  /* Ligne de progression */
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -2rem;
+    height: 1px;
+    background: var(--border-strong);
+  }
+
+  .step:last-child::before {
+    right: 0;
+  }
+
+  /* Point violet sur la ligne */
+  .step::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+  }
+
+  .step__number {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+  }
+
+  .step__title {
+    margin-bottom: 0.625rem;
+  }
+
+  .step__text {
+    font-size: 0.9375rem;
+    color: var(--text-2);
+    max-width: 18rem;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1024px) {
+    .method__steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .step:nth-child(2n)::before {
+      right: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .method__steps {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .step {
+      padding: 0 0 2.25rem 1.75rem;
+    }
+
+    .step::before {
+      top: 4px;
+      bottom: 0;
+      left: 4px;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+
+    .step:last-child::before {
+      display: none;
+    }
+
+    .step::after {
+      top: 4px;
+      left: 0;
+    }
+
+    .step__number {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>

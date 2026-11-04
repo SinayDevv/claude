@@ -1,0 +1,109 @@
+---
+import Icon from '../Icon.astro';
+import { about } from '../../data/site';
+---
+
+<section class="section about" id="a-propos" aria-labelledby="about-title">
+  <div class="container about__grid">
+    <div class="about__content" data-reveal>
+      <div class="section-head">
+        <span class="eyebrow">À propos</span>
+        <h2 class="h2" id="about-title">{about.title}</h2>
+      </div>
+      <div class="about__text">
+        {about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    <ul class="about__values">
+      {
+        about.values.map((value, i) => (
+          <li class="value" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            <span class="value__icon" aria-hidden="true">
+              <Icon name="check" size={16} />
+            </span>
+            <div>
+              <h3 class="value__title">{value.title}</h3>
+              <p class="value__text">{value.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .about__content .section-head {
+    margin-bottom: 1.75rem;
+  }
+
+  .about__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 36rem;
+    color: var(--text-2);
+    font-size: 1.0625rem;
+    text-wrap: pretty;
+  }
+
+  .about__values {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+  }
+
+  .value {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem 1.375rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--duration) var(--ease);
+  }
+
+  .value:hover {
+    border-color: var(--primary-border);
+  }
+
+  .value__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: 0.125rem;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  .value__title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  .value__text {
+    font-size: 0.9375rem;
+    color: var(--text-2);
+  }
+
+  @media (max-width: 900px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

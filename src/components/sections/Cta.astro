@@ -1,0 +1,110 @@
+---
+import Button from '../Button.astro';
+import Icon from '../Icon.astro';
+import { cta, site } from '../../data/site';
+---
+
+<section class="cta-section" id="contact" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta" data-reveal>
+      <div class="cta__glow" aria-hidden="true"></div>
+      <div class="cta__content">
+        <h2 class="h2 cta__title" id="cta-title" set:html={cta.title} />
+        <p class="cta__text">{cta.text}</p>
+        <div class="cta__actions">
+          <Button calendly variant="white" size="lg" arrow>{cta.button}</Button>
+          <Button href={`mailto:${site.email}`} variant="ghost" size="lg">Nous écrire</Button>
+        </div>
+        <p class="cta__note">
+          <Icon name="calendar" size={16} />
+          {cta.note}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding-block: var(--section);
+  }
+
+  .cta {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+    border-radius: var(--radius-xl);
+    background: var(--ink);
+    color: var(--on-dark);
+    text-align: center;
+    box-shadow: 0 24px 48px -32px rgba(17, 16, 24, 0.45);
+  }
+
+  .cta__glow {
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 60%;
+    aspect-ratio: 1;
+    background: radial-gradient(closest-side, rgba(118, 43, 255, 0.55), transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  .cta::after {
+    content: '';
+    position: absolute;
+    bottom: -45%;
+    left: -10%;
+    width: 45%;
+    aspect-ratio: 1;
+    background: radial-gradient(closest-side, rgba(118, 43, 255, 0.28), transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  .cta__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .cta__title {
+    color: var(--on-dark);
+  }
+
+  .cta__text {
+    max-width: 34rem;
+    font-size: 1.0625rem;
+    color: var(--on-dark-muted);
+    text-wrap: pretty;
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .cta__note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--on-dark-muted);
+  }
+
+  @media (max-width: 640px) {
+    .cta__actions :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+/**
+ * Logo MIYA Agency : symbole (M sur fond violet) + nom.
+ * `variant="light"` pour les fonds sombres.
+ */
+interface Props {
+  variant?: 'dark' | 'light';
+  class?: string;
+}
+
+const { variant = 'dark', class: className } = Astro.props;
+---
+
+<span class:list={['logo', `logo--${variant}`, className]}>
+  <svg class="logo__mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
+    <rect width="32" height="32" rx="9" fill="#762BFF"></rect>
+    <path
+      d="M8.75 22.25v-11.5l7.25 6.75 7.25-6.75v11.5"
+      fill="none"
+      stroke="#FAFAFC"
+      stroke-width="2.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+  <span class="logo__text">MIYA<span class="logo__sub">Agency</span></span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .logo--light {
+    color: var(--on-dark);
+  }
+
+  .logo__mark {
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+    box-shadow: 0 2px 6px -2px rgba(118, 43, 255, 0.5);
+    border-radius: 9px;
+  }
+
+  .logo__text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3em;
+    font-size: 1.125rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .logo__sub {
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+  }
+
+  .logo--light .logo__sub {
+    color: var(--on-dark-muted);
+  }
+</style>

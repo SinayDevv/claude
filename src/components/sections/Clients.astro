@@ -1,0 +1,123 @@
+---
+/**
+ * Bande « Ils nous font confiance ».
+ * Tant qu'aucun client n'est renseigné dans `src/data/site.ts`, des emplacements
+ * neutres sont affichés, prêts à recevoir les logos.
+ */
+import { clients, clientSlots } from '../../data/site';
+
+const items =
+  clients.length > 0
+    ? clients
+    : Array.from({ length: clientSlots }, (_, i) => ({ name: `Logo client ${i + 1}`, logo: undefined, href: undefined }));
+const placeholder = clients.length === 0;
+---
+
+<section class="clients" aria-labelledby="clients-title">
+  <div class="container">
+    <p class="clients__title" id="clients-title">Ils nous font confiance</p>
+    <ul class:list={['clients__list', placeholder && 'clients__list--placeholder']}>
+      {
+        items.map((client) => (
+          <li class="clients__item">
+            {client.logo ? (
+              client.href ? (
+                <a href={client.href} target="_blank" rel="noopener noreferrer" class="clients__logo">
+                  <img src={client.logo} alt={client.name} loading="lazy" height="40" />
+                </a>
+              ) : (
+                <span class="clients__logo">
+                  <img src={client.logo} alt={client.name} loading="lazy" height="40" />
+                </span>
+              )
+            ) : (
+              <span class="clients__slot" aria-hidden="true">
+                Logo
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+    {placeholder && <p class="sr-only">Emplacements réservés aux logos de nos clients.</p>}
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding-block: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem);
+  }
+
+  .clients__title {
+    margin-bottom: 1.75rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .clients__list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .clients__item {
+    display: flex;
+    justify-content: center;
+  }
+
+  .clients__logo {
+    display: inline-flex;
+    align-items: center;
+    height: 2.5rem;
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition:
+      opacity var(--duration) var(--ease),
+      filter var(--duration) var(--ease);
+  }
+
+  .clients__logo:hover {
+    filter: none;
+    opacity: 1;
+  }
+
+  .clients__logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .clients__slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 10rem;
+    height: 3.25rem;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 900px) {
+    .clients__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .clients__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

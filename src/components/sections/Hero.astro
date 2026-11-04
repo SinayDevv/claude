@@ -1,0 +1,194 @@
+---
+import Button from '../Button.astro';
+import DemoTag from '../DemoTag.astro';
+import HeroVisual from '../HeroVisual.astro';
+import { hero, heroStats } from '../../data/site';
+---
+
+<section class="hero" id="accueil" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <span class="badge hero__badge" data-animate style="--i:0">
+        <span class="badge__dot" aria-hidden="true"></span>
+        {hero.badge}
+      </span>
+
+      <h1 class="h1 hero__title" id="hero-title" data-animate style="--i:1">
+        {hero.title.before}<span class="accent">{hero.title.highlight}</span>{hero.title.after}
+      </h1>
+
+      <p class="lead hero__subtitle" data-animate style="--i:2">{hero.subtitle}</p>
+
+      <div class="hero__actions" data-animate style="--i:3">
+        <Button calendly size="lg" arrow>{hero.primaryCta}</Button>
+        <Button href="#services" variant="secondary" size="lg">{hero.secondaryCta}</Button>
+      </div>
+
+      <dl class="hero__stats" data-animate style="--i:4">
+        {
+          heroStats.map((stat) => (
+            <div class="hero__stat">
+              <dt class="hero__stat-label">{stat.label}</dt>
+              <dd class="hero__stat-value">{stat.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="hero__stats-note"><DemoTag /> Indicateurs de démonstration — remplacez-les par vos résultats réels.</p>
+    </div>
+
+    <div class="hero__visual">
+      <HeroVisual />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(4rem, 8vw, 6.5rem);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -12%;
+    width: 48vw;
+    height: 48vw;
+    max-width: 760px;
+    max-height: 760px;
+    background: radial-gradient(closest-side, rgba(118, 43, 255, 0.08), transparent);
+    pointer-events: none;
+  }
+
+  .hero__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .hero__content {
+    max-width: 40rem;
+  }
+
+  .hero__badge {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__title {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__subtitle {
+    max-width: 32rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    margin: 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+
+  .hero__stat-value {
+    margin: 0;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .hero__stat-label {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .hero__stats-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .hero__visual {
+    container-type: inline-size;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Animation d'entrée (CSS uniquement) */
+  [data-animate] {
+    animation: hero-in 0.9s var(--ease) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+
+    .hero__content {
+      max-width: 44rem;
+    }
+
+    .hero__visual {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero__actions :global(.btn) {
+      flex: 1 1 auto;
+    }
+
+    .hero__stats {
+      gap: 1rem;
+      padding-top: 1.5rem;
+    }
+
+    .hero__stat-value {
+      font-size: 1.5rem;
+    }
+
+    .hero__stat-label {
+      font-size: 0.75rem;
+    }
+  }
+</style>

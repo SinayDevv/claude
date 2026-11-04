@@ -1,0 +1,95 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site } from '../data/site';
+---
+
+<LegalPage
+  title="Politique de confidentialité"
+  description={`Politique de confidentialité et protection des données personnelles de ${site.name}.`}
+  updated="4 novembre 2026"
+>
+  <p class="todo">
+    <strong>À compléter :</strong> adaptez ce document à vos traitements réels (outils de mesure d'audience,
+    formulaires, CRM…), remplacez les champs entre crochets, puis supprimez cet encadré dans
+    <code>src/pages/politique-de-confidentialite.astro</code>.
+  </p>
+
+  <h2>Responsable du traitement</h2>
+  <p>
+    Le responsable du traitement des données collectées sur ce site est <mark>[Raison sociale]</mark>,
+    <mark>[adresse complète]</mark>, joignable à l'adresse <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+
+  <h2>Données collectées</h2>
+  <p>Dans le cadre de votre navigation et de vos échanges avec {site.name}, nous pouvons collecter :</p>
+  <ul>
+    <li>
+      <strong>Données de prise de rendez-vous</strong> (nom, prénom, adresse e-mail, société, numéro de téléphone,
+      informations que vous choisissez de nous transmettre), via le service Calendly ;
+    </li>
+    <li><strong>Données de correspondance</strong> lorsque vous nous écrivez par e-mail ;</li>
+    <li>
+      <strong>Données de navigation</strong> (adresse IP, type de navigateur, pages consultées), collectées par
+      notre hébergeur à des fins de sécurité et de bon fonctionnement du site
+      <mark>[et par notre outil de mesure d'audience, le cas échéant]</mark>.
+    </li>
+  </ul>
+
+  <h2>Finalités et bases légales</h2>
+  <ul>
+    <li>Répondre à vos demandes de contact et organiser un rendez-vous (exécution de mesures précontractuelles) ;</li>
+    <li>Assurer la sécurité et le bon fonctionnement du site (intérêt légitime) ;</li>
+    <li>
+      Mesurer l'audience du site <mark>[si applicable]</mark> (consentement ou intérêt légitime selon l'outil
+      utilisé) ;
+    </li>
+    <li>Vous adresser des communications commerciales, uniquement avec votre accord (consentement).</li>
+  </ul>
+
+  <h2>Destinataires des données</h2>
+  <p>
+    Vos données sont destinées aux équipes de {site.name}. Elles peuvent être transmises à nos sous-traitants
+    techniques, strictement pour les besoins décrits ci-dessus : hébergeur du site
+    (<mark>[nom de l'hébergeur]</mark>), service de prise de rendez-vous (Calendly LLC, États-Unis — transferts encadrés
+    par des clauses contractuelles types) <mark>[et autres outils utilisés : CRM, e-mailing…]</mark>.
+  </p>
+
+  <h2>Durée de conservation</h2>
+  <ul>
+    <li>Données de contact et de rendez-vous : <mark>[3 ans]</mark> à compter du dernier échange ;</li>
+    <li>Données de navigation : <mark>[13 mois]</mark> maximum ;</li>
+    <li>Données clients : pendant la durée de la relation contractuelle, puis selon les obligations légales.</li>
+  </ul>
+
+  <h2>Vos droits</h2>
+  <p>
+    Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés »,
+    vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité
+    de vos données, ainsi que du droit de définir des directives relatives à leur sort après votre décès.
+  </p>
+  <p>
+    Pour exercer ces droits, écrivez-nous à <a href={`mailto:${site.email}`}>{site.email}</a> ou par courrier à
+    l'adresse indiquée ci-dessus. Vous pouvez également introduire une réclamation auprès de la CNIL
+    (<a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>).
+  </p>
+
+  <h2>Cookies</h2>
+  <p>
+    Ce site n'utilise pas de cookies publicitaires. Seuls des cookies strictement nécessaires au fonctionnement
+    du site peuvent être déposés. Le service Calendly peut déposer ses propres cookies lorsque vous ouvrez la fenêtre
+    de prise de rendez-vous. <mark>[Complétez cette section si vous ajoutez un outil de mesure d'audience ou des
+    pixels publicitaires, et mettez en place un bandeau de consentement le cas échéant.]</mark>
+  </p>
+
+  <h2>Sécurité</h2>
+  <p>
+    Nous mettons en œuvre des mesures techniques et organisationnelles appropriées afin de protéger vos données
+    contre toute perte, altération, accès non autorisé ou divulgation.
+  </p>
+
+  <h2>Modification de la politique</h2>
+  <p>
+    Cette politique peut être mise à jour à tout moment. La date de dernière mise à jour figure en haut de cette
+    page.
+  </p>
+</LegalPage>

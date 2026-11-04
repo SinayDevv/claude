@@ -1,0 +1,435 @@
+---
+/**
+ * Visuel du hero : forme abstraite violette + carte blanche avec courbe de
+ * croissance + carte « leads » + notification. Données de démonstration.
+ */
+import DemoTag from './DemoTag.astro';
+import { smoothPath, areaPath, columnPath, type Point } from '../lib/svg';
+
+/* Courbe de croissance (données de démonstration) */
+const W = 360;
+const H = 168;
+const BASE = 150;
+const points: Point[] = [
+  [12, 136],
+  [62, 122],
+  [112, 128],
+  [160, 100],
+  [208, 92],
+  [256, 66],
+  [304, 50],
+  [348, 22],
+];
+const linePath = smoothPath(points);
+const fillPath = areaPath(points, BASE);
+const last = points[points.length - 1];
+const gridLines = [30, 70, 110, BASE];
+const months = ['Jan.', 'Fév.', 'Mars', 'Avr.', 'Mai', 'Juin'];
+
+/* Mini histogramme « leads » */
+const bars = [38, 52, 46, 60, 68, 82, 100];
+const BAR_W = 12;
+const BAR_GAP = 8;
+const BAR_H = 48;
+---
+
+<div class="hv">
+  <div class="hv__shape" aria-hidden="true"></div>
+  <div class="hv__glow" aria-hidden="true"></div>
+
+  <figure class="hv__card hv__card--main">
+    <figcaption class="hv__head">
+      <div>
+        <span class="hv__label">Chiffre d'affaires généré</span>
+        <strong class="hv__value">128&nbsp;400&nbsp;€</strong>
+      </div>
+      <span class="hv__delta" title="Évolution sur la période">+32&nbsp;%</span>
+    </figcaption>
+
+    <svg
+      class="hv__chart"
+      viewBox={`0 0 ${W} ${H}`}
+      role="img"
+      aria-label="Courbe de croissance du chiffre d'affaires (données de démonstration)"
+    >
+      <defs>
+        <linearGradient id="hv-area" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#762BFF" stop-opacity="0.22"></stop>
+          <stop offset="100%" stop-color="#762BFF" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      {gridLines.map((y) => <line x1="12" x2={W - 12} y1={y} y2={y} class="hv__grid" />)}
+      <path d={fillPath} fill="url(#hv-area)" class="hv__area"></path>
+      <path d={linePath} class="hv__line" pathLength="1"></path>
+      <circle cx={last[0]} cy={last[1]} r="9" class="hv__pulse"></circle>
+      <circle cx={last[0]} cy={last[1]} r="5" class="hv__dot"></circle>
+    </svg>
+    <div class="hv__axis" aria-hidden="true">
+      {months.map((m) => <span>{m}</span>)}
+    </div>
+    <DemoTag class="hv__demo" />
+  </figure>
+
+  <figure class="hv__card hv__card--leads">
+    <figcaption>
+      <span class="hv__label">Leads qualifiés</span>
+      <div class="hv__row">
+        <strong class="hv__value hv__value--sm">1&nbsp;248</strong>
+        <span class="hv__delta">+18&nbsp;%</span>
+      </div>
+    </figcaption>
+    <svg
+      class="hv__bars"
+      viewBox={`0 0 ${bars.length * BAR_W + (bars.length - 1) * BAR_GAP} ${BAR_H}`}
+      aria-hidden="true"
+    >
+      {
+        bars.map((pct, i) => {
+          const h = (pct / 100) * BAR_H;
+          return (
+            <path
+              d={columnPath(i * (BAR_W + BAR_GAP), BAR_H - h, BAR_W, h, 3)}
+              class:list={['hv__bar', i >= bars.length - 3 && 'hv__bar--accent']}
+              style={`--i:${i}`}
+            />
+          );
+        })
+      }
+    </svg>
+  </figure>
+
+  <div class="hv__pill" aria-hidden="true">
+    <span class="hv__pill-icon">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+    </span>
+    <span><strong>Nouveau lead</strong> · à l'instant</span>
+  </div>
+</div>
+
+<style>
+  .hv {
+    --delay: 0.25s;
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1 / 0.96;
+    margin-inline: auto;
+  }
+
+  /* Forme abstraite violette */
+  .hv__shape {
+    position: absolute;
+    top: 2%;
+    right: 0;
+    width: 74%;
+    height: 82%;
+    border-radius: 56px 56px 56px 120px;
+    background:
+      radial-gradient(120% 90% at 100% 0%, rgba(255, 255, 255, 0.22), transparent 55%),
+      linear-gradient(160deg, #8a4bff 0%, #762bff 55%, #6a22ee 100%);
+    transform: rotate(-6deg);
+    box-shadow: 0 40px 80px -40px rgba(118, 43, 255, 0.55);
+    animation: hv-shape 1.2s var(--ease) both;
+  }
+
+  .hv__glow {
+    position: absolute;
+    inset: 20% -10% -15% 10%;
+    background: radial-gradient(closest-side, rgba(118, 43, 255, 0.22), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  /* Cartes */
+  .hv__card {
+    position: absolute;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    animation: hv-card 1s var(--ease) both;
+  }
+
+  .hv__card--main {
+    left: 0;
+    top: 15%;
+    width: 68%;
+    padding: 1.375rem 1.375rem 1.125rem;
+    animation-delay: var(--delay);
+  }
+
+  .hv__card--leads {
+    left: 62%;
+    top: 69%;
+    width: 38%;
+    padding: 1.125rem 1.125rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    animation-delay: calc(var(--delay) + 0.25s);
+  }
+
+  .hv__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hv__label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+  }
+
+  .hv__value {
+    display: block;
+    font-size: clamp(1.25rem, 3.4cqw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .hv__value--sm {
+    font-size: clamp(1.125rem, 3cqw, 1.5rem);
+  }
+
+  .hv__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .hv__delta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Courbe */
+  .hv__chart {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .hv__grid {
+    stroke: rgba(17, 16, 24, 0.07);
+    stroke-width: 1;
+  }
+
+  .hv__area {
+    animation: hv-fade 1s var(--ease) calc(var(--delay) + 1s) both;
+  }
+
+  .hv__line {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: hv-draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--delay) + 0.5s) forwards;
+  }
+
+  .hv__dot {
+    fill: var(--primary);
+    stroke: var(--surface);
+    stroke-width: 2.5;
+    animation: hv-fade 0.4s var(--ease) calc(var(--delay) + 1.9s) both;
+  }
+
+  .hv__pulse {
+    fill: rgba(118, 43, 255, 0.18);
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: hv-pulse 2.4s ease-out calc(var(--delay) + 2.1s) infinite;
+    opacity: 0;
+  }
+
+  .hv__axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding-inline: 0.25rem;
+    font-size: 0.6875rem;
+    color: var(--muted);
+  }
+
+  .hv :global(.hv__demo) {
+    position: absolute;
+    top: -0.75rem;
+    left: 1.25rem;
+    background: var(--surface);
+  }
+
+  /* Barres */
+  .hv__bars {
+    width: 100%;
+    height: auto;
+  }
+
+  .hv__bar {
+    fill: var(--primary-soft);
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation: hv-grow 0.7s var(--ease) calc(var(--delay) + 0.6s + var(--i) * 0.06s) both;
+  }
+
+  .hv__bar--accent {
+    fill: var(--primary);
+  }
+
+  /* Notification */
+  .hv__pill {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.875rem 0.5rem 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    font-size: 0.75rem;
+    color: var(--text-2);
+    white-space: nowrap;
+    animation: hv-card 1s var(--ease) calc(var(--delay) + 0.5s) both;
+  }
+
+  .hv__pill strong {
+    color: var(--ink);
+  }
+
+  .hv__pill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  @keyframes hv-card {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes hv-shape {
+    from {
+      opacity: 0;
+      transform: rotate(-2deg) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(-6deg) scale(1);
+    }
+  }
+
+  @keyframes hv-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes hv-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hv-grow {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes hv-pulse {
+    0% {
+      opacity: 0.9;
+      transform: scale(0.5);
+    }
+    70% {
+      opacity: 0;
+      transform: scale(1.6);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.6);
+    }
+  }
+
+  /* Petits écrans : cartes plus compactes */
+  @container (max-width: 440px) {
+    .hv__card--main {
+      padding: 1rem 1rem 0.875rem;
+      border-radius: 14px;
+    }
+
+    .hv__card--leads {
+      padding: 0.875rem 0.875rem 0.75rem;
+      border-radius: 14px;
+      gap: 0.625rem;
+    }
+
+    .hv__card--leads .hv__delta {
+      display: none;
+    }
+
+    .hv__head {
+      margin-bottom: 0.5rem;
+    }
+
+    .hv__label {
+      font-size: 0.6875rem;
+    }
+
+    .hv__axis {
+      font-size: 0.625rem;
+    }
+
+    .hv__pill {
+      font-size: 0.6875rem;
+      padding: 0.375rem 0.75rem 0.375rem 0.375rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hv__line {
+      stroke-dasharray: none;
+      stroke-dashoffset: 0;
+    }
+    .hv__pulse {
+      display: none;
+    }
+  }
+</style>

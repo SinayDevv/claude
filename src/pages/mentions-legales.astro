@@ -1,0 +1,68 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site } from '../data/site';
+---
+
+<LegalPage
+  title="Mentions légales"
+  description={`Mentions légales du site ${site.name}.`}
+  updated="4 novembre 2026"
+>
+  <p class="todo">
+    <strong>À compléter :</strong> remplacez les champs entre crochets par les informations de votre société,
+    puis supprimez cet encadré dans <code>src/pages/mentions-legales.astro</code>.
+  </p>
+
+  <h2>Éditeur du site</h2>
+  <p>
+    Le site <strong>{site.name}</strong> est édité par <mark>[Raison sociale]</mark>, <mark>[forme juridique]</mark>
+    au capital de <mark>[montant] €</mark>, immatriculée au RCS de <mark>[ville]</mark> sous le numéro
+    <mark>[numéro SIREN]</mark>, dont le siège social est situé <mark>[adresse complète]</mark>.
+  </p>
+  <ul>
+    <li>Numéro de TVA intracommunautaire : <mark>[numéro]</mark></li>
+    <li>Adresse e-mail : <a href={`mailto:${site.email}`}>{site.email}</a></li>
+    <li>Téléphone : <mark>[numéro de téléphone]</mark></li>
+    <li>Directeur ou directrice de la publication : <mark>[nom et prénom]</mark></li>
+  </ul>
+
+  <h2>Hébergement</h2>
+  <p>
+    Le site est hébergé par <mark>[nom de l'hébergeur]</mark>, <mark>[forme juridique]</mark>, dont le siège social est
+    situé <mark>[adresse de l'hébergeur]</mark> — <mark>[téléphone / site web de l'hébergeur]</mark>.
+  </p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    L'ensemble des éléments composant ce site (textes, graphismes, logos, icônes, images, mise en page) est la
+    propriété exclusive de <mark>[Raison sociale]</mark> ou de ses partenaires, et est protégé par le droit de la
+    propriété intellectuelle. Toute reproduction, représentation, modification ou adaptation, totale ou partielle,
+    sans autorisation écrite préalable est interdite.
+  </p>
+
+  <h2>Données personnelles</h2>
+  <p>
+    Les modalités de collecte et de traitement de vos données personnelles sont détaillées dans notre
+    <a href="/politique-de-confidentialite/">politique de confidentialité</a>.
+  </p>
+
+  <h2>Prise de rendez-vous</h2>
+  <p>
+    La prise de rendez-vous en ligne est assurée par le service Calendly (Calendly LLC). En cliquant sur
+    « Réserver un appel », vous êtes mis en relation avec ce service, soumis à ses propres conditions d'utilisation
+    et à sa propre politique de confidentialité.
+  </p>
+
+  <h2>Responsabilité</h2>
+  <p>
+    Les informations publiées sur ce site sont fournies à titre indicatif. <mark>[Raison sociale]</mark> s'efforce
+    d'en assurer l'exactitude mais ne saurait être tenue responsable des erreurs, omissions ou de l'indisponibilité
+    du service. Les liens vers des sites tiers n'engagent pas la responsabilité de l'éditeur.
+  </p>
+
+  <h2>Droit applicable</h2>
+  <p>
+    Les présentes mentions légales sont soumises au droit français. En cas de litige, et à défaut de résolution
+    amiable, les tribunaux compétents seront ceux du ressort de <mark>[ville]</mark>.
+  </p>
+</LegalPage>

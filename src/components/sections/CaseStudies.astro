@@ -1,0 +1,178 @@
+---
+import Icon from '../Icon.astro';
+import DemoTag from '../DemoTag.astro';
+import CaseVisual from '../CaseVisual.astro';
+import { caseStudies, site } from '../../data/site';
+---
+
+<section class="section cases" id="etudes-de-cas" aria-labelledby="cases-title">
+  <div class="container">
+    <div class="cases__head" data-reveal>
+      <div class="section-head">
+        <span class="eyebrow">Études de cas</span>
+        <h2 class="h2" id="cases-title">Des résultats concrets, campagne après campagne.</h2>
+        <p class="lead">Quelques exemples de dispositifs d'acquisition que nous concevons et pilotons pour nos clients.</p>
+      </div>
+      <a href={site.calendlyUrl} target="_blank" rel="noopener noreferrer" class="link-arrow cases__link" data-calendly>
+        Discuter de votre projet <Icon name="arrow-right" />
+      </a>
+    </div>
+
+    <ul class="cases__grid">
+      {
+        caseStudies.map((item, i) => (
+          <li class="card card--hover case" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            {item.image ? (
+              <img class="case__image" src={item.image} alt={item.imageAlt ?? `Campagne — ${item.name}`} loading="lazy" />
+            ) : (
+              <CaseVisual variant={item.visual} delta={item.results.find((r) => /^[+\-x×]/.test(r.value))?.value} />
+            )}
+
+            <div class="case__body">
+              <div class="case__meta">
+                <span class="case__sector">{item.sector}</span>
+                <DemoTag />
+              </div>
+              <h3 class="h3 case__title">{item.name}</h3>
+              <p class="case__objective">
+                <span class="case__objective-label">Objectif</span>
+                {item.objective}
+              </p>
+              <dl class="case__results">
+                {item.results.map((r) => (
+                  <div class="case__result">
+                    <dd class="case__result-value">{r.value}</dd>
+                    <dt class="case__result-label">{r.label}</dt>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cases__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .cases__head .section-head {
+    margin-bottom: 0;
+  }
+
+  .cases__link {
+    flex: none;
+    margin-bottom: 0.25rem;
+  }
+
+  .cases__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .case {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .case__image {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem 1.625rem 1.75rem;
+  }
+
+  .case__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .case__sector {
+    display: inline-flex;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-pill);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .case__objective {
+    font-size: 0.9375rem;
+    color: var(--text-2);
+    text-wrap: pretty;
+  }
+
+  .case__objective-label {
+    display: block;
+    margin-bottom: 0.125rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .case__results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 0.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .case__result {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .case__result-value {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .case__result-label {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 1024px) {
+    .cases__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .cases__head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cases__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+/**
+ * Bouton / lien stylé.
+ * - `calendly` : pointe vers le lien de prise de rendez-vous du site et s'ouvre
+ *   dans une fenêtre Calendly intégrée (ou un nouvel onglet en repli).
+ */
+import type { HTMLAttributes } from 'astro/types';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props extends HTMLAttributes<'a'> {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'white' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  /** Affiche une flèche après le libellé. */
+  arrow?: boolean;
+  calendly?: boolean;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  arrow = false,
+  calendly = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const finalHref = calendly ? site.calendlyUrl : href;
+const external = calendly || (finalHref ?? '').startsWith('http');
+---
+
+<a
+  class:list={['btn', `btn--${variant}`, size !== 'md' && `btn--${size}`, className]}
+  href={finalHref}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  data-calendly={calendly ? '' : undefined}
+  {...rest}
+>
+  <slot />
+  {arrow && <Icon name="arrow-right" />}
+</a>
