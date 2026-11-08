@@ -7,6 +7,8 @@ Proposition de refonte de l'en-tête de la page d'accueil (bandeau, menu, hero, 
 | Fichier | Rôle |
 | --- | --- |
 | `index.html` | La page, autonome (aucune dépendance externe) |
+| `img/logo-ls-couvreur-63.png` | Logo du client, détouré (fond transparent) |
+| `img/facade-avant-*.jpg`, `img/facade-apres-*.jpg` | Photos de l'avant/après (800 et 1200 px) |
 | `fonts/` | Polices Bricolage Grotesque et DM Sans (licence OFL) |
 | `apercu/presentation-whatsapp.jpg` | Visuel de présentation (desktop + mobile) prêt à envoyer |
 | `apercu/demo-mobile.mp4` | Vidéo de 10 s : avant/après animé sur mobile |
@@ -14,20 +16,22 @@ Proposition de refonte de l'en-tête de la page d'accueil (bandeau, menu, hero, 
 
 ## Ce que contient l'en-tête
 
-- Bandeau d'infos : zone d'intervention (63), décennale, devis gratuit, téléphone.
+- Bandeau d'infos : zone d'intervention (Clermont-Ferrand et 70 km alentour), décennale, devis gratuit, téléphone.
 - Menu orienté façade : Ravalement, Peinture façade, Toiture, Réalisations, Contact.
-- Hero : promesse claire, deux appels à l'action (devis / appel), points de confiance.
-- Avant/après interactif (glisser à la souris, au doigt ou au clavier), avec une animation d'ouverture « coup de rouleau ».
+- Hero : promesse claire, deux appels à l'action (devis / appel), points de confiance (dont « 230+ toitures rénovées »).
+- Avant/après interactif sur photo réelle (glisser à la souris, au doigt ou au clavier), avec une animation d'ouverture.
 - Argument différenciant : un couvreur qui traite la façade *et* ce qui la protège (toiture, gouttières, rives).
 - Sur mobile : barre fixe « Appeler / Devis gratuit » en bas de l'écran, menu latéral.
 
-## À personnaliser avant mise en ligne
+Les informations (téléphone 07 80 10 31 14, 230+ toitures, 70 km, décennale, devis gratuit) viennent du site actuel du client.
 
-1. **Téléphone** : renseigner `CONFIG.phone` en bas de `index.html` (ex. `"06 12 34 56 78"`). Le numéro s'affiche alors partout et les boutons deviennent cliquables (`tel:`).
-2. **Logo** : le monogramme « LS » est une proposition ; le remplacer par le logo du client si besoin.
-3. **Avant/après** : l'illustration est générée en SVG. Idéalement, la remplacer par deux photos d'un vrai chantier du client.
-4. **Mentions** : vérifier avec le client (décennale, zone d'intervention exacte, etc.).
+## Avant/après : à remplacer avant la mise en ligne
+
+- **Avant** : photo réelle d'une maison de Saint-Diéry (63), par Torsade de Pointes, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Saint-Di%C3%A9ry-Bas1.JPG), domaine public (CC0).
+- **Après** : simulation numérique de rénovation sur la même photo (enduit repeint, volets repeints, toiture démoussée). Ce n'est pas un chantier du client.
+
+Le site actuel du client ne contient aucune photo de façade (uniquement des toitures). Pour la version en ligne, remplacer ces deux images par un vrai avant/après de ses chantiers, pris sous le même angle. Montrer un chantier qui n'est pas le sien serait trompeur pour ses prospects.
 
 ## Voir la page
 
-Ouvrir `index.html` dans un navigateur. Ajouter `?capture&pos=50` à l'URL fige les animations (utile pour faire des captures).
+Ouvrir `index.html` dans un navigateur. Ajouter `?capture&pos=50` à l'URL fige les animations (utile pour faire des captures). Le numéro de téléphone se modifie dans l'objet `CONFIG` en bas du fichier.

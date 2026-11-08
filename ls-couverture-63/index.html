@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LS Couverture 63 — Ravalement & peinture de façade dans le Puy-de-Dôme</title>
-<meta name="description" content="Ravalement, peinture et traitement de façade dans le Puy-de-Dôme (63). Couvreur de métier : on protège votre maison du toit jusqu'au sol. Devis gratuit et sans engagement.">
+<title>LS Couverture 63 — Ravalement & peinture de façade à Clermont-Ferrand (63)</title>
+<meta name="description" content="Ravalement, peinture et traitement de façade à Clermont-Ferrand et dans un rayon de 70 km (Puy-de-Dôme). Couvreur de métier : on protège votre maison du toit jusqu'au sol. Devis gratuit et sans engagement.">
 <meta name="theme-color" content="#f6f1e9">
 <!--
   ============================================================
@@ -25,15 +25,15 @@
 @font-face{font-family:"DM Sans";src:url(fonts/dm-sans-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 
 :root{
-  --ink:#15181c;
+  --ink:#171f25;
   --ink-2:#2d3238;
   --muted:#5d6268;
   --bg:#f6f1e9;          /* blanc cassé "enduit" */
   --bg-2:#ece3d5;
   --card:#ffffff;
-  --accent:#e0661f;      /* ocre / terre cuite */
-  --accent-2:#c4530f;
-  --accent-soft:#fbe4d3;
+  --accent:#ea6508;      /* orange du logo (#fa6e09), un peu plus dense pour le texte blanc */
+  --accent-2:#c75206;
+  --accent-soft:#fde3cf;
   --sage:#3f6a55;
   --sage-soft:#dfeae2;
   --line:rgba(21,24,28,.10);
@@ -63,12 +63,8 @@ svg{display:block}
 /* ---------- Navigation ---------- */
 .nav{position:sticky;top:0;z-index:60;background:rgba(246,241,233,.82);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
 .nav .container{display:flex;align-items:center;gap:28px;height:78px}
-.logo{display:flex;align-items:center;gap:12px;flex:none}
-.logo-mark{width:46px;height:46px;flex:none}
-.logo-text{display:flex;flex-direction:column;line-height:1}
-.logo-name{font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-.015em}
-.logo-name em{font-style:normal;color:var(--accent)}
-.logo-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:6px}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{display:block;height:52px;width:auto}
 .menu{display:flex;align-items:center;gap:30px;margin-left:auto;font-size:15.5px;font-weight:500}
 .menu a{position:relative;padding:8px 0;color:var(--ink-2);white-space:nowrap;transition:color .15s}
 .menu a:hover{color:var(--ink)}
@@ -85,7 +81,7 @@ svg{display:block}
 /* ---------- Boutons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:inherit;font-weight:700;border-radius:14px;border:0;cursor:pointer;white-space:nowrap;transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease}
 .btn svg{width:19px;height:19px;flex:none}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 14px 28px -14px rgba(224,102,31,.85),inset 0 -2px 0 rgba(0,0,0,.14)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 14px 28px -14px rgba(234,101,8,.8),inset 0 -2px 0 rgba(0,0,0,.14)}
 .btn-primary:hover{background:var(--accent-2);transform:translateY(-1px)}
 .btn-ghost{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line),0 2px 6px rgba(21,24,28,.05)}
 .btn-ghost:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(21,24,28,.2),0 6px 14px rgba(21,24,28,.08)}
@@ -98,7 +94,7 @@ svg{display:block}
 .hero{position:relative;padding:46px 0 34px;isolation:isolate}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;
   background:
-    radial-gradient(48% 62% at 80% 42%,rgba(224,102,31,.13),transparent 70%),
+    radial-gradient(48% 62% at 80% 42%,rgba(250,110,9,.12),transparent 70%),
     radial-gradient(40% 50% at 8% 0%,rgba(63,106,85,.08),transparent 70%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;pointer-events:none;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -128,10 +124,11 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
 .trust .ck svg{width:14px;height:14px}
 
 /* ---------- Avant / après ---------- */
-.ba{--pos:100%;position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#d8d4cc;box-shadow:0 0 0 8px #fff,var(--shadow-lg);cursor:ew-resize;touch-action:pan-y;-webkit-user-select:none;user-select:none;outline:none}
+.ba{--pos:100%;position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#9aa2a6;box-shadow:0 0 0 8px #fff,var(--shadow-lg);cursor:ew-resize;touch-action:pan-y;-webkit-user-select:none;user-select:none;outline:none}
 .ba:focus-visible{box-shadow:0 0 0 8px #fff,0 0 0 11px var(--accent),var(--shadow-lg)}
 .ba-layer{position:absolute;inset:0}
-.ba-layer>svg{width:100%;height:100%}
+.ba-layer>img{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;pointer-events:none}
+.ba-note{position:absolute;right:14px;bottom:14px;padding:5px 9px;border-radius:7px;background:rgba(23,31,37,.55);color:rgba(255,255,255,.88);font-size:11px;font-weight:600;letter-spacing:.02em;pointer-events:none}
 .ba-after{clip-path:inset(0 0 0 var(--pos))}
 .ba-tag{position:absolute;top:16px;padding:7px 12px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1}
 .ba-before .ba-tag{right:calc(100% - var(--pos) + 14px);background:rgba(21,24,28,.72);color:#fff}
@@ -140,7 +137,7 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
 .ba-handle::before{content:"";position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:#fff;box-shadow:0 0 14px rgba(0,0,0,.28)}
 .ba-knob{position:absolute;top:50%;left:0;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28),0 0 0 5px rgba(255,255,255,.35)}
 .ba-knob svg{width:26px;height:26px}
-.ba-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(21,24,28,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;pointer-events:none;transition:opacity .4s}
+.ba-hint{position:absolute;left:var(--pos);top:calc(50% + 40px);transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(21,24,28,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;pointer-events:none;transition:opacity .4s}
 .ba-hint svg{width:16px;height:16px}
 .ba.touched .ba-hint{opacity:0}
 
@@ -197,9 +194,7 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
   .container{padding:0 20px}
   .topbar{display:none}
   .nav .container{height:66px}
-  .logo-mark{width:40px;height:40px}
-  .logo-name{font-size:18.5px}
-  .logo-tag{font-size:10px;margin-top:5px}
+  .logo img{height:42px}
   .hero{padding:26px 0 24px}
   .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "visual" "lead" "actions";row-gap:0}
   h1{text-wrap:balance}
@@ -211,7 +206,8 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
   .ba-tag{top:12px;font-size:10.5px;padding:6px 10px}
   .ba-before .ba-tag{right:calc(100% - var(--pos) + 10px)}.ba-after .ba-tag{left:calc(var(--pos) + 10px)}
   .ba-knob{width:44px;height:44px;margin:-22px 0 0 -22px}
-  .ba-hint{bottom:12px;font-size:12px;padding:8px 12px}
+  .ba-hint{top:calc(50% + 32px);font-size:12px;padding:8px 12px}
+  .ba-note{display:none}
   .proof{position:relative;left:auto;bottom:auto;max-width:none;margin:16px 0 0;padding:14px 16px}
   .stamp{display:none}
   .cta-row{margin-top:22px}
@@ -237,7 +233,6 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
   .callbar .btn{padding:15px 12px;font-size:15.5px}
 }
 @media (max-width:380px){
-  .logo-tag{display:none}
   .svc p{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -275,7 +270,7 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
   <div class="topbar">
     <div class="container">
       <div class="topbar-group">
-        <span class="topbar-item"><svg><use href="#i-pin"/></svg>Ravalement &amp; peinture de façade dans le <strong>Puy-de-Dôme (63)</strong></span>
+        <span class="topbar-item"><svg><use href="#i-pin"/></svg>Façade &amp; toiture à <strong>Clermont-Ferrand et 70 km alentour</strong></span>
         <span class="topbar-item"><svg><use href="#i-shield"/></svg>Assurance décennale</span>
       </div>
       <div class="topbar-group">
@@ -289,15 +284,7 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
   <nav class="nav" aria-label="Navigation principale">
     <div class="container">
       <a class="logo" href="#" aria-label="LS Couverture 63, accueil">
-        <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
-          <rect width="48" height="48" rx="13" fill="#15181c"/>
-          <path d="M9.5 22.5L24 11l14.5 11.5" fill="none" stroke="#e0661f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="24" y="38" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="15.5" fill="#fff" letter-spacing=".5">LS</text>
-        </svg>
-        <span class="logo-text">
-          <span class="logo-name">LS Couverture <em>63</em></span>
-          <span class="logo-tag">Façades &amp; toitures</span>
-        </span>
+        <img src="img/logo-ls-couvreur-63.png" alt="LS Couvreur 63" width="520" height="198">
       </a>
 
       <ul class="menu">
@@ -325,7 +312,7 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
       <div class="hero-grid">
         <div class="hero-head">
           <span class="eyebrow"><span class="pulse" aria-hidden="true"></span>Spécialiste de la façade · Puy-de-Dôme</span>
-          <h1 id="hero-title">Redonnez à votre maison une <span class="hl">façade neuve.<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 17C46 9 104 6 160 7.5c50 1.3 96-1.8 136 2.2 2.6 3.6 1.6 9-1 12.3-44 2.2-92-.4-144 1.6C108 25.3 56 28 7 27.4 2 25.5 1.4 20.4 4 17z" fill="#e0661f" fill-opacity=".9"/></svg></span></h1>
+          <h1 id="hero-title">Redonnez à votre maison une <span class="hl">façade neuve.<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 17C46 9 104 6 160 7.5c50 1.3 96-1.8 136 2.2 2.6 3.6 1.6 9-1 12.3-44 2.2-92-.4-144 1.6C108 25.3 56 28 7 27.4 2 25.5 1.4 20.4 4 17z" fill="#fa6e09" fill-opacity=".88"/></svg></span></h1>
         </div>
 
         <p class="lead hero-lead">Ravalement, fissures, peinture : votre façade retrouve son éclat et sa protection pour longtemps. <strong>Couvreurs de métier</strong>, nous protégeons votre maison du toit jusqu'au sol, avec un seul interlocuteur du devis à la dernière couche.</p>
@@ -338,14 +325,15 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
           <ul class="trust">
             <li><span class="ck"><svg><use href="#i-check"/></svg></span>Devis gratuit</li>
             <li><span class="ck"><svg><use href="#i-check"/></svg></span>Assurance décennale</li>
-            <li><span class="ck"><svg><use href="#i-check"/></svg></span>Artisan local du 63</li>
+            <li><span class="ck"><svg><use href="#i-check"/></svg></span>230+ toitures rénovées</li>
           </ul>
         </div>
 
         <div class="hero-visual">
           <div class="ba" id="ba" tabindex="0" role="slider" aria-label="Comparer la façade avant et après rénovation" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 % avant, 50 % après">
-            <div class="ba-layer ba-before" data-skin="before"><span class="ba-tag">Avant</span></div>
-            <div class="ba-layer ba-after" data-skin="after"><span class="ba-tag">Après</span></div>
+            <div class="ba-layer ba-before"><img src="img/facade-avant-1200.jpg" srcset="img/facade-avant-800.jpg 800w, img/facade-avant-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 560px" width="1200" height="900" alt="Façade avant rénovation : enduit gris, taches et volets défraîchis" draggable="false"><span class="ba-tag">Avant</span></div>
+            <div class="ba-layer ba-after"><img src="img/facade-apres-1200.jpg" srcset="img/facade-apres-800.jpg 800w, img/facade-apres-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 560px" width="1200" height="900" alt="La même façade après rénovation : enduit clair, volets repeints, toiture démoussée" draggable="false"><span class="ba-tag">Après</span></div>
+            <span class="ba-note" aria-hidden="true">Photo réelle · après : simulation</span>
             <div class="ba-handle" aria-hidden="true"><span class="ba-knob"><svg><use href="#i-drag"/></svg></span></div>
             <span class="ba-hint" aria-hidden="true"><svg><use href="#i-hand"/></svg>Glissez pour comparer</span>
           </div>
@@ -414,7 +402,7 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.55rem,4.7vw
 <script>
 /* ========= À personnaliser ========= */
 const CONFIG = {
-  phone: "" // ex. "06 12 34 56 78" : s'affiche partout et active les boutons d'appel
+  phone: "07 80 10 31 14" // s'affiche partout et active les boutons d'appel
 };
 /* =================================== */
 
@@ -439,228 +427,7 @@ const CONFIG = {
   menu.addEventListener("click", e => { if (e.target === menu || e.target.closest(".close, a")) toggle(false); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") toggle(false); });
 
-  /* ---------- Illustration avant / après (SVG) ---------- */
-  function rng(seed) {
-    return function () {
-      seed = (seed + 0x6d2b79f5) | 0;
-      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
-  const PALETTES = {
-    before: {
-      sky1: "#aab3b7", sky2: "#d6d8d2", cloud: "#c3c7c4", cloudOp: .9,
-      far: "#a9afaa", dome: "#8e9690", domeHi: "#9ba29c", meadow: "#a2a487", trees: "#646d52", trees2: "#566047",
-      lawn1: "#959a70", lawn2: "#767c55", path: "#a69d8b",
-      facade: "#b4aa94", socle: "#857c69", stone: "#4b4a46", chimney: "#a39a86",
-      roof: "#86594a", roofHi: "#8f6253", roofLine: "#5f3d31", ridge: "#5a3a2f",
-      gutter: "#75716a", shutter: "#8c9794", shutterLine: "#717b78", door: "#7b7062", doorLine: "#665c50",
-      glass1: "#6f7b80", glass2: "#9aa3a6", frame: "#cdc6b6",
-      bush: "#5a6443", bush2: "#4b5437", bushHi: "#69734f"
-    },
-    after: {
-      sky1: "#76b2e2", sky2: "#f6eee2", cloud: "#ffffff", cloudOp: .85,
-      far: "#a7c1b6", dome: "#759a86", domeHi: "#88ab97", meadow: "#a9c47c", trees: "#5c8a4a", trees2: "#4b7a3d",
-      lawn1: "#95bb60", lawn2: "#6f9848", path: "#e2d6bf",
-      facade: "#f4ece0", socle: "#d8cab3", stone: "#5a5e62", chimney: "#ece2d2",
-      roof: "#c25b33", roofHi: "#cf6a40", roofLine: "#953f22", ridge: "#8a3a1f",
-      gutter: "#b4bdc2", shutter: "#4c725f", shutterLine: "#3b5c4c", door: "#33503f", doorLine: "#284033",
-      glass1: "#5a8db3", glass2: "#d6ebf7", frame: "#ffffff",
-      bush: "#4f8239", bush2: "#3f6d2f", bushHi: "#67994a"
-    }
-  };
-
-  function houseSVG(skin) {
-    const B = skin === "before";
-    const P = PALETTES[skin];
-    const id = s => skin + "-" + s;
-    const r = rng(11);
-    let s = "";
-
-    // Ciel, soleil, nuages
-    s += `<rect width="800" height="600" fill="url(#${id("sky")})"/>`;
-    if (!B) s += `<circle cx="660" cy="70" r="190" fill="url(#${id("sun")})"/>`;
-    const cloud = (x, y, k) => `<g fill="${P.cloud}" opacity="${P.cloudOp}"><ellipse cx="${x}" cy="${y}" rx="${46 * k}" ry="${17 * k}"/><ellipse cx="${x + 24 * k}" cy="${y - 13 * k}" rx="${30 * k}" ry="${20 * k}"/><ellipse cx="${x - 22 * k}" cy="${y - 7 * k}" rx="${24 * k}" ry="${14 * k}"/></g>`;
-    if (B) {
-      s += cloud(120, 80, 2.2) + cloud(430, 60, 2.6) + cloud(700, 105, 2.1) + cloud(300, 150, 1.5);
-      s += `<rect width="800" height="600" fill="#6d726f" opacity=".08"/>`;
-    } else {
-      s += cloud(140, 92, 1.1) + cloud(470, 58, .8) + cloud(735, 150, .7);
-    }
-
-    // Chaîne des Puys + puy de Dôme et son antenne
-    s += `<path d="M0 352C120 318 230 332 340 318S560 300 800 316V420H0Z" fill="${P.far}"/>`;
-    s += `<path d="M-30 372C20 322 52 270 92 263l14 9 16-9c44 6 88 58 138 109Z" fill="${P.domeHi}"/>`;
-    s += `<path d="M560 372C612 350 640 246 690 220c15-8 38-8 52 0 48 26 80 118 118 152Z" fill="${P.dome}"/>`;
-    s += `<path d="M742 220c48 26 80 118 118 152H760c-10-60-30-120-18-152z" fill="#000" opacity=".06"/>`;
-    s += `<path d="M716 214V176M712 186h8M713 196h6" stroke="${B ? "#7d847f" : "#e9eef0"}" stroke-width="2.2" stroke-linecap="round"/>`;
-    s += `<path d="M0 378C210 362 590 370 800 358V600H0Z" fill="${P.meadow}"/>`;
-    // Arbres au loin
-    const tree = (x, y, k, c) => `<ellipse cx="${x}" cy="${y}" rx="${18 * k}" ry="${22 * k}" fill="${c}"/>`;
-    [[30, 470, 1.4], [70, 478, 1.1], [112, 465, 1.5], [685, 470, 1.3], [728, 462, 1.6], [772, 476, 1.2]]
-      .forEach(([x, y, k], i) => (s += tree(x, y, k, i % 2 ? P.trees : P.trees2)));
-    s += `<path d="M0 528C250 520 550 520 800 526V600H0Z" fill="url(#${id("lawn")})"/>`;
-
-    // Façade
-    s += `<rect x="160" y="250" width="480" height="290" fill="${P.facade}"/>`;
-    s += `<rect x="160" y="508" width="480" height="32" fill="${P.socle}"/><rect x="160" y="508" width="480" height="2" fill="#000" opacity=".1"/>`;
-    for (let i = 0, y = 274; y < 500; i++, y += 24) {
-      const w = i % 2 ? 22 : 32;
-      s += `<rect x="160" y="${y}" width="${w}" height="22" fill="${P.stone}"/><rect x="${640 - w}" y="${y}" width="${w}" height="22" fill="${P.stone}"/>`;
-    }
-
-    if (B) {
-      s += `<g clip-path="url(#${id("facade")})">`;
-      s += `<rect x="160" y="250" width="480" height="290" fill="url(#${id("grime")})"/>`;
-      // Coulures sous la gouttière
-      for (let x = 168; x < 630; x += 14 + r() * 26) {
-        s += `<rect x="${x.toFixed(1)}" y="270" width="${(3 + r() * 6).toFixed(1)}" height="${(24 + r() * 70).toFixed(1)}" fill="url(#${id("streak")})"/>`;
-      }
-      // Mousses / remontées d'humidité
-      let m = "M160 540V503";
-      for (let x = 160; x <= 640; x += 16) m += `L${x} ${(488 + r() * 16).toFixed(1)}`;
-      s += `<path d="${m}L640 540Z" fill="#46522c" opacity=".42"/>`;
-      for (let i = 0; i < 16; i++) s += `<ellipse cx="${(170 + r() * 460).toFixed(1)}" cy="${(470 + r() * 30).toFixed(1)}" rx="${(6 + r() * 16).toFixed(1)}" ry="${(3 + r() * 6).toFixed(1)}" fill="#4f5b33" opacity="${(.15 + r() * .25).toFixed(2)}"/>`;
-      // Enduit qui s'écaille
-      s += `<g fill="#cdc4b0" stroke="#7f7562" stroke-width="1">
-        <path d="M430 318l14-6 10 4 6 10-8 9-15 2-9-8z"/>
-        <path d="M206 448l12-3 7 6-3 10-12 3-6-7z"/>
-        <path d="M578 410l10-4 9 5-1 9-11 4-8-6z"/>
-        <path d="M330 470l9-2 6 5-2 7-9 1-5-5z"/>
-      </g>`;
-      // Fissures
-      s += `<g fill="none" stroke="#3f382f" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M289 386l7 11-3 10 9 13-2 12 8 10" stroke-width="1.6"/>
-        <path d="M296 397l8 3" stroke-width="1"/>
-        <path d="M512 405l-8-12 4-11-10-14 2-10" stroke-width="1.6"/>
-        <path d="M335 286l-6 12 5 9-7 13 3 10" stroke-width="1.3"/>
-        <path d="M600 470l-9 8 2 9-7 9" stroke-width="1.3"/>
-      </g>`;
-      s += `</g>`;
-    } else {
-      s += `<rect x="160" y="250" width="480" height="290" fill="url(#${id("light")})"/>`;
-    }
-
-    // Fenêtres
-    const win = (cx, y, w, h, tilt) => {
-      const x = cx - w / 2;
-      let o = "";
-      o += `<rect x="${x - 7}" y="${y - 7}" width="${w + 14}" height="${h + 7}" fill="${P.stone}"/>`;
-      o += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#${id("glass")})"/>`;
-      if (!B) o += `<path d="M${x + 6} ${y + h - 4}L${x + w - 18} ${y + 4}H${x + w - 4}L${x + 14} ${y + h - 4}Z" fill="#fff" opacity=".35"/>`;
-      else o += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#3a352c" opacity=".18"/>`;
-      o += `<g fill="none" stroke="${P.frame}"><rect x="${x + 1.5}" y="${y + 1.5}" width="${w - 3}" height="${h - 3}" stroke-width="3"/><path d="M${cx} ${y}V${y + h}M${x} ${y + h / 3}H${x + w}M${x} ${y + (2 * h) / 3}H${x + w}" stroke-width="2"/></g>`;
-      o += `<rect x="${x - 11}" y="${y + h}" width="${w + 22}" height="7" fill="${P.stone}"/>`;
-      // Volets à barres et écharpe
-      const leaf = (lx, rot) => {
-        let g = `<g${rot ? ` transform="rotate(${rot} ${lx + 13} ${y})"` : ""}>`;
-        g += `<rect x="${lx}" y="${y - 2}" width="26" height="${h + 2}" fill="${P.shutter}"/>`;
-        g += `<path d="M${lx + 8.7} ${y - 2}V${y + h}M${lx + 17.3} ${y - 2}V${y + h}" stroke="${P.shutterLine}" stroke-width="1.2"/>`;
-        g += `<rect x="${lx}" y="${y + 8}" width="26" height="5" fill="${P.shutterLine}"/><rect x="${lx}" y="${y + h - 14}" width="26" height="5" fill="${P.shutterLine}"/>`;
-        g += `<path d="M${lx + 3} ${y + h - 12}L${lx + 23} ${y + 12}" stroke="${P.shutterLine}" stroke-width="4"/>`;
-        if (B) g += `<path d="M${lx + 4} ${y + 24}l7-3 5 4-3 7-7 1z" fill="#b9bfb9" opacity=".8"/><rect x="${lx}" y="${y - 2}" width="26" height="${h + 2}" fill="#2f2a22" opacity=".12"/>`;
-        else g += `<rect x="${lx}" y="${y - 2}" width="5" height="${h + 2}" fill="#fff" opacity=".12"/>`;
-        return g + "</g>";
-      };
-      o += leaf(x - 7 - 26, 0) + leaf(x + w + 7, tilt || 0);
-      if (B) {
-        const sy = y + h + 7, sl = Math.min(54, 506 - sy);
-        o += `<g clip-path="url(#${id("facade")})" opacity=".8">`;
-        o += `<path d="M${x - 5} ${sy}h6l-1.5 ${sl}h-3z" fill="url(#${id("streak")})"/>`;
-        o += `<path d="M${cx - 2} ${sy}h4l-1 ${sl * .7}h-2z" fill="url(#${id("streak")})"/>`;
-        o += `<path d="M${x + w} ${sy}h6l-2 ${sl * .9}h-2.5z" fill="url(#${id("streak")})"/></g>`;
-      }
-      return o;
-    };
-    s += win(255, 300, 52, 78) + win(400, 300, 52, 78) + win(545, 300, 52, 78, B ? 5 : 0);
-    s += win(255, 414, 52, 78) + win(545, 414, 52, 78);
-
-    // Porte
-    s += `<rect x="362" y="394" width="76" height="146" fill="${P.stone}"/>`;
-    s += `<rect x="370" y="402" width="60" height="138" fill="${P.door}"/>`;
-    s += `<rect x="374" y="406" width="52" height="24" fill="url(#${id("glass")})"/><path d="M387 406v24M400 406v24M413 406v24" stroke="${P.doorLine}" stroke-width="2"/>`;
-    s += `<g fill="none" stroke="${P.doorLine}" stroke-width="2.5"><rect x="378" y="438" width="44" height="40" rx="2"/><rect x="378" y="486" width="44" height="46" rx="2"/></g>`;
-    s += `<circle cx="420" cy="482" r="3.2" fill="${B ? "#8a7a5a" : "#e4b24a"}"/>`;
-    if (B) s += `<rect x="370" y="402" width="60" height="138" fill="#2f2a22" opacity=".12"/><path d="M384 446l8-2 4 5-3 6-8 0z" fill="#a89c88"/>`;
-    else s += `<rect x="370" y="402" width="6" height="138" fill="#fff" opacity=".1"/>`;
-    s += `<rect x="352" y="538" width="96" height="9" rx="1.5" fill="${P.stone}"/>`;
-    // Applique
-    s += `<rect x="452" y="414" width="12" height="18" rx="3" fill="#2b2b2b"/><rect x="454.5" y="417" width="7" height="11" rx="1.5" fill="${B ? "#8b8574" : "#ffe7a6"}"/>`;
-    if (!B) s += `<circle cx="458" cy="422" r="22" fill="#ffe7a6" opacity=".18"/>`;
-
-    // Ombre de l'avant-toit
-    s += `<rect x="160" y="268" width="480" height="24" fill="url(#${id("eave")})"/>`;
-
-    // Toiture
-    s += `<g clip-path="url(#${id("roof")})"><rect x="140" y="140" width="520" height="130" fill="url(#${id("tiles")})"/>`;
-    if (B) {
-      for (let i = 0; i < 46; i++) s += `<ellipse cx="${(160 + r() * 480).toFixed(1)}" cy="${(158 + r() * 100).toFixed(1)}" rx="${(4 + r() * 13).toFixed(1)}" ry="${(2 + r() * 5).toFixed(1)}" fill="${r() > .5 ? "#5d6a37" : "#77834a"}" opacity="${(.45 + r() * .4).toFixed(2)}"/>`;
-      s += `<rect x="140" y="140" width="520" height="130" fill="#20180f" opacity=".14"/>`;
-    } else {
-      s += `<rect x="140" y="140" width="520" height="130" fill="url(#${id("light")})" opacity=".5"/>`;
-    }
-    s += `</g>`;
-    let sc = "";
-    for (let x = 142; x < 658; x += 14) sc += `M${x} 262a7 6 0 0 0 14 0`;
-    s += `<path d="${sc}" fill="${P.roofLine}"/>`;
-    s += `<rect x="200" y="143" width="400" height="11" rx="5.5" fill="${P.ridge}"/>`;
-    let rd = "";
-    for (let x = 214; x < 596; x += 26) rd += `M${x} 144v9`;
-    s += `<path d="${rd}" stroke="#000" stroke-opacity=".18" stroke-width="2"/>`;
-    // Cheminée + solin
-    s += `<rect x="520" y="100" width="38" height="62" fill="${P.chimney}"/><rect x="514" y="93" width="50" height="10" fill="${P.stone}"/><rect x="516" y="156" width="46" height="7" fill="${P.gutter}"/>`;
-    if (B) s += `<rect x="520" y="103" width="38" height="40" fill="url(#${id("streak")})"/>`;
-    // Gouttière + descente
-    if (B) s += `<path d="M138 265Q400 276 662 265v8Q400 284 138 273z" fill="${P.gutter}"/><path d="M300 271l14 1v4l-14-1zM470 272l10 0v4h-10z" fill="#8a5a35" opacity=".7"/>`;
-    else s += `<rect x="138" y="264" width="524" height="9" rx="4.5" fill="${P.gutter}"/><rect x="138" y="265" width="524" height="2.5" rx="1.25" fill="#fff" opacity=".55"/>`;
-    s += `<path d="M651 272v8q0 6-5 9v251" fill="none" stroke="${P.gutter}" stroke-width="8"/>`;
-    if (B) s += `<rect x="642" y="420" width="8" height="26" fill="${P.facade}"/><path d="M646 446c-6 20-10 50-6 90" stroke="url(#${id("streak")})" stroke-width="10" fill="none"/>`;
-
-    // Allée, massifs, pots
-    s += `<path d="M370 547h60l44 53H326z" fill="${P.path}"/>`;
-    const bushes = (cx, flip) => {
-      let g = "";
-      [[-34, 8, 38, 26], [0, 0, 34, 30], [30, 10, 30, 22], [-8, 16, 44, 18]].forEach(([dx, dy, rx, ry], i) => {
-        const x = cx + dx * flip;
-        g += `<ellipse cx="${x}" cy="${532 + dy}" rx="${rx}" ry="${ry}" fill="${i % 2 ? P.bush2 : P.bush}"/>`;
-        g += `<ellipse cx="${x - 6 * flip}" cy="${526 + dy}" rx="${rx * .5}" ry="${ry * .45}" fill="${P.bushHi}" opacity=".7"/>`;
-      });
-      if (B) for (let i = 0; i < 6; i++) g += `<circle cx="${(cx - 40 + r() * 80).toFixed(1)}" cy="${(520 + r() * 26).toFixed(1)}" r="${(3 + r() * 4).toFixed(1)}" fill="#8b7a4b" opacity=".7"/>`;
-      else for (let i = 0; i < 12; i++) g += `<circle cx="${(cx - 44 + r() * 88).toFixed(1)}" cy="${(512 + r() * 32).toFixed(1)}" r="2.6" fill="${i % 3 ? "#f3c6d6" : "#fff4d6"}"/>`;
-      return g;
-    };
-    s += bushes(150, 1) + bushes(652, -1);
-    if (!B) {
-      const pot = x => `<path d="M${x - 11} 524h22l-3 19h-16z" fill="#b8643a"/><rect x="${x - 12}" y="521" width="24" height="5" rx="1.5" fill="#a35530"/>` +
-        `<g stroke="#6c8a4a" stroke-width="1.6">${[-7, -3, 1, 5, 8].map(d => `<path d="M${x + d * .6} 522L${x + d} ${500 + Math.abs(d)}"/>`).join("")}</g>` +
-        `<g fill="#8e72c4">${[-7, -3, 1, 5, 8].map(d => `<ellipse cx="${x + d}" cy="${498 + Math.abs(d)}" rx="2" ry="5"/>`).join("")}</g>`;
-      s += pot(340) + pot(460);
-    }
-
-    const defs = `<defs>
-      <linearGradient id="${id("sky")}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.sky1}"/><stop offset=".62" stop-color="${P.sky2}"/></linearGradient>
-      <radialGradient id="${id("sun")}"><stop offset="0" stop-color="#fff7d6" stop-opacity=".95"/><stop offset="1" stop-color="#fff7d6" stop-opacity="0"/></radialGradient>
-      <linearGradient id="${id("glass")}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${P.glass2}"/><stop offset="1" stop-color="${P.glass1}"/></linearGradient>
-      <linearGradient id="${id("lawn")}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.lawn1}"/><stop offset="1" stop-color="${P.lawn2}"/></linearGradient>
-      <linearGradient id="${id("streak")}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e271d" stop-opacity=".5"/><stop offset="1" stop-color="#2e271d" stop-opacity="0"/></linearGradient>
-      <linearGradient id="${id("grime")}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d261c" stop-opacity=".3"/><stop offset=".35" stop-color="#2d261c" stop-opacity=".06"/><stop offset=".78" stop-color="#2f3a1f" stop-opacity=".1"/><stop offset="1" stop-color="#2f3a1f" stop-opacity=".4"/></linearGradient>
-      <linearGradient id="${id("light")}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
-      <linearGradient id="${id("eave")}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="${B ? .3 : .16}"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
-      <pattern id="${id("tiles")}" width="14" height="13" patternUnits="userSpaceOnUse" y="150">
-        <rect width="14" height="13" fill="${P.roof}"/><rect x="1.5" width="6" height="13" fill="${P.roofHi}"/>
-        <path d="M0 12.4h14" stroke="${P.roofLine}" stroke-width="1.8"/><path d="M8.5 0v13" stroke="${P.roofLine}" stroke-opacity=".35"/>
-      </pattern>
-      <clipPath id="${id("roof")}"><path d="M142 264H658L594 150H206Z"/></clipPath>
-      <clipPath id="${id("facade")}"><rect x="160" y="250" width="480" height="290"/></clipPath>
-    </defs>`;
-
-    return `<svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${defs}${s}</svg>`;
-  }
-
   const ba = document.getElementById("ba");
-  ba.querySelectorAll("[data-skin]").forEach(el => el.insertAdjacentHTML("afterbegin", houseSVG(el.dataset.skin)));
 
   /* ---------- Curseur avant / après ---------- */
   let pos = 100, dragging = false, touched = false, anim = null;
