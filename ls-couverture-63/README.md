@@ -17,18 +17,19 @@ Proposition de refonte de l'en-tête de la page d'accueil (bandeau, menu, hero, 
 ## Ce que contient l'en-tête
 
 - Bandeau d'infos : zone d'intervention (Clermont-Ferrand et 70 km alentour), décennale, devis gratuit, téléphone.
-- Menu orienté façade : Ravalement, Peinture façade, Toiture, Réalisations, Contact.
-- Hero : promesse claire, deux appels à l'action (devis / appel), points de confiance (dont « 230+ toitures rénovées »).
+- Menu 100 % façade : Ravalement, Peinture façade, Fissures, Réalisations, Contact.
+- Hero : promesse claire, deux appels à l'action (devis / appel), points de confiance (devis gratuit, assurance décennale, artisan local du 63).
 - Avant/après interactif sur photo réelle (glisser à la souris, au doigt ou au clavier), avec une animation d'ouverture.
-- Argument différenciant : un couvreur qui traite la façade *et* ce qui la protège (toiture, gouttières, rives).
+- Encart « Une préparation qui dure » : nettoyage, traitement des fissures et sous-couche avant toute peinture.
+- Prestations : ravalement, peinture de façade, fissures et humidité, nettoyage de façade. L'activité toiture a été retirée (le client ne la propose plus).
 - Sur mobile : barre fixe « Appeler / Devis gratuit » en bas de l'écran, menu latéral.
 
-Les informations (téléphone 07 80 10 31 14, 230+ toitures, 70 km, décennale, devis gratuit) viennent du site actuel du client.
+Les informations (téléphone 07 80 10 31 14, zone de 70 km, décennale, devis gratuit) viennent du site actuel du client.
 
 ## Avant/après : à remplacer avant la mise en ligne
 
 - **Avant** : photo réelle d'une maison de Saint-Diéry (63), par Torsade de Pointes, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Saint-Di%C3%A9ry-Bas1.JPG), domaine public (CC0).
-- **Après** : simulation numérique de rénovation sur la même photo (enduit repeint, volets repeints, toiture démoussée). Ce n'est pas un chantier du client.
+- **Après** : simulation numérique de rénovation sur la même photo (enduit repeint, volets repeints ; toiture laissée d'origine). Ce n'est pas un chantier du client.
 
 Le site actuel du client ne contient aucune photo de façade (uniquement des toitures). Pour la version en ligne, remplacer ces deux images par un vrai avant/après de ses chantiers, pris sous le même angle. Montrer un chantier qui n'est pas le sien serait trompeur pour ses prospects.
 
