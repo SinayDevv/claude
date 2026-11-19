@@ -1,4 +1,4 @@
-# LS Couverture 63 : maquette du nouvel en-tête
+# LS Façade 63 : maquette du nouvel en-tête
 
 Proposition de refonte de l'en-tête de la page d'accueil (bandeau, menu, hero, prestations) de https://www.lscouverture63.fr/, repositionné sur la **rénovation et la peinture de façade**.
 
@@ -7,7 +7,7 @@ Proposition de refonte de l'en-tête de la page d'accueil (bandeau, menu, hero, 
 | Fichier | Rôle |
 | --- | --- |
 | `index.html` | La page, autonome (aucune dépendance externe) |
-| `img/logo-ls-couvreur-63.png` | Logo du client, détouré (fond transparent) |
+| `img/logo-ls-facade-63.png` | Logo « LS Façade 63 » : le « LS » du logo d'origine, ligne du bas recomposée en Russo One élargie et inclinée |
 | `img/facade-avant-*.jpg`, `img/facade-apres-*.jpg` | Photos de l'avant/après (800 et 1200 px) |
 | `fonts/` | Polices Bricolage Grotesque et DM Sans (licence OFL) |
 | `apercu/presentation-whatsapp.jpg` | Visuel de présentation (desktop + mobile) prêt à envoyer |
